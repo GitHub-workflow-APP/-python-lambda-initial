@@ -1,0 +1,5 @@
+{
+    "description": "python-lambda-apex second",
+    "runtime": "python3.7",
+    "handler": "orangefunc.ofunc"
+}

@@ -1,0 +1,8 @@
+{
+  "name": "python-lambda-apex",
+  "description": "Apex-managed (https://apex.run) version of Brandon's Python Lambda testcase",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::390809507444:role/python-lambda-apex_lambda_function",
+  "environment": {}
+}

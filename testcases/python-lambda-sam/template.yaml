@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  python-lambda-sam
+
+  Sample SAM Template for python-lambda-sam
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  BrandonLambdaSAMFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: sam_func/
+      Handler: app.here_we_go
+      Runtime: python3.7
+      Events:
+        BrandonLambdaSAM:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /sam
+            Method: get
+  BrandonLambdaSecondSAMFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: sam_func/
+      Handler: app.here_is_another
+      Runtime: python3.7
+      Events:
+        BrandonLambdaSecondSAM:
+          Type: Api
+          Properties:
+            Path: /second_sam
+            Method: post 
+  BrandonLambdaThirdSAMFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: sam_func/
+      Handler: greenfunc.gfunc
+      Runtime: python3.7
+      Events:
+        BrandonLambdaSecondSAM:
+          Type: Api
+          Properties:
+            Path: /gfunc
+            Method: get
+
+
+
+Outputs:
+  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
+  # Find out more about other implicit resources you can reference within SAM
+  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
+  BrandonLambdaSAMApi:
+    Description: "Endpoint for first function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/sam/"
+  BrandonLambdaSAMSecondApi:
+    Description: "Endpoint for second function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/second_sam/"
+  BrandonLambdaSAMThirdApi:
+    Description: "Endpoint for third function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/gfunc/"
+  BrandonLambdaSAMFunction:
+    Description: "Brandon Lambda SAM ARN"
+    Value: !GetAtt BrandonLambdaSAMFunction.Arn
+  BrandonLambdaSAMFunctionIamRole:
+    Description: "Implicit IAM Role created for Brandon Lambda SAM function"
+    Value: !GetAtt BrandonLambdaSAMFunctionRole.Arn

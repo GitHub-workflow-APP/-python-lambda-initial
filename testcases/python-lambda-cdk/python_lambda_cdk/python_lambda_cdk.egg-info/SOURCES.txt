@@ -1,0 +1,7 @@
+README.md
+setup.py
+python_lambda_cdk/python_lambda_cdk.egg-info/PKG-INFO
+python_lambda_cdk/python_lambda_cdk.egg-info/SOURCES.txt
+python_lambda_cdk/python_lambda_cdk.egg-info/dependency_links.txt
+python_lambda_cdk/python_lambda_cdk.egg-info/requires.txt
+python_lambda_cdk/python_lambda_cdk.egg-info/top_level.txt

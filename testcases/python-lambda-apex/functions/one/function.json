@@ -1,0 +1,5 @@
+{
+    "description": "python-lambda-apex first",
+    "runtime": "python3.7",
+    "handler": "primero.apex_get"
+}
